@@ -15,4 +15,5 @@ export const Wrapper = styled.div<{ color: string }>`
     font-size: 18px;
     font-weight: 800;
     color: ${p => p.color};
-  }`
+  }
+  `

@@ -1,15 +1,18 @@
 import { Story, Meta } from '@storybook/react';
-import Confirm, { ConfirmProps } from '../components/Confirm/Confirm';
+import Confirm, { ConfirmProps } from '../app/components/Confirm/Confirm';
 
 export default {
   title: 'Example/Confirm',
   component: Confirm,
+  argTypes: {
+    onConfirm: { action: 'confirm' },
+    onCancel: { action: 'cancel' },
+  },
 } as Meta;
 
 const Template: Story<ConfirmProps> = (args) => <Confirm {...args} />;
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Post não encontrado',
-  description: 'Este post não foi encontrado. Você está sendo redirecionado(a) para a lista de posts.'
+  title: 'Você tem certeza?',
 }
