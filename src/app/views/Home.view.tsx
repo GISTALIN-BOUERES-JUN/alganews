@@ -1,12 +1,19 @@
 import usePageTitle from "../../core/hooks/usePageTitle"
-import DefaultLayoyt from "../layouts/Default"
+import PostList from "../features/PostsList"
+import UserEarnings from "../features/UserEarnings"
+import UserPerformance from "../features/UserPerformance"
+import UserTopTags from "../features/UserTopTags"
+import DefaultLayout from "../layouts/Default"
 
 export default function Home () {
   usePageTitle('Home')
-  return <DefaultLayoyt>
-    <h1>Home</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse incidunt eligendi iure ut rerum, distinctio quisquam sed culpa minima ipsa.
-    </p>
-  </DefaultLayoyt>
+
+  return <DefaultLayout>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: 32 }}>
+      <UserTopTags />
+      <UserEarnings />
+    </div>
+    <UserPerformance />
+    <PostList />
+  </DefaultLayout>
 }
