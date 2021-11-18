@@ -1,3 +1,4 @@
+import confirm from '../../../core/utils/confirm'
 import Logo from '../../components/Logo'
 import NavBar from '../../components/NavBar'
 import SessionController from '../../components/SessionController'
@@ -7,7 +8,7 @@ interface DefaultLayoutProps {
   children: React.ReactNode
 }
 
-function DefaultLayoyt (props: DefaultLayoutProps) {
+function DefaultLayout (props: DefaultLayoutProps) {
   return <DL.Wrapper>
     <DL.Header>
       <Logo />
@@ -21,12 +22,19 @@ function DefaultLayoyt (props: DefaultLayoutProps) {
       </DL.FeaturedContent>
       <DL.Aside>
         <SessionController
-          name="Geraldo Boueres"
+          name="Daniel Bonifacio"
           description="editor há 2 anos"
+          onLogout={() => {
+            confirm({
+              title: 'Voce quer delogar?',
+              onConfirm: () => window.alert('batata'),
+              onCancel: () => window.alert('laranja'),
+            })
+          }}
         />
       </DL.Aside>
     </DL.Main>
   </DL.Wrapper>
 }
 
-export default DefaultLayoyt
+export default DefaultLayout
