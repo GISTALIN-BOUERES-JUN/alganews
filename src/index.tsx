@@ -30,14 +30,14 @@ ReactDOM.render(
 
 async function getDataFromApi() {
   try {
-    const response = await http.post('https://apiexterna.com/posts', {
+    const response = await http.post('/posts', {
       title: 'Olá, mundo!',
       body: 'Lorem Ipsum dolor sit amet'
     })
     const post = response.data
     console.log(post)
   } catch (error) {
-    console.log('Houve um erro: ', error.message)
+    console.log('Houve um erro: ')
   }
 }
 
