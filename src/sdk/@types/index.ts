@@ -6,4 +6,4 @@ export type { User } from './User'
 export type { Payment } from './Payment'
 
 // AlgaNews
-export type { AlgaNews } from './alganews'
+export type { AlgaNews } from './AlgaNews'
