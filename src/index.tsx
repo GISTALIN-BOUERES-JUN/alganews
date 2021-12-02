@@ -10,7 +10,6 @@ import GlobalStyles from './core/globalStyles';
 import EditorsListView from './app/views/EditorsList.view';
 import PostCreateView from './app/views/PostCreate.view';
 import EditorProfileView from './app/views/EditorProfile.view';
-import http from './core/http';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -28,20 +27,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-async function getDataFromApi() {
-  try {
-    const response = await http.post('/posts', {
-      title: 'Olá, mundo!',
-      body: 'Lorem Ipsum dolor sit amet'
-    })
-    const post = response.data
-    console.log(post)
-  } catch (error) {
-    console.log('Houve um erro: ')
-  }
-}
 
-getDataFromApi()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
