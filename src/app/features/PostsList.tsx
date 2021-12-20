@@ -9,22 +9,29 @@ import Skeleton from "react-loading-skeleton";
 import { Column, usePagination, useTable } from "react-table";
 import { Post } from "../../sdk/@types";
 import PostService from "../../sdk/services/Post.service";
+import Loading from "../components/Loading";
 import Table from "../components/Table/Table";
 
 export default function PostList() {
   const [posts, setPosts] = useState<Post.Paginated>();
   const [error, setError] = useState<Error>();
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     PostService.getAllPosts({
-      page: 0,
+      page,
       size: 7,
       showAll: true,
       sort: ["createdAt", "desc"],
     })
       .then(setPosts)
-      .catch((error) => setError(new Error(error.message)));
-  }, []);
+      .catch((error) => setError(new Error(error.message)))
+      .then(() => {
+        setLoading(false);
+      });
+  }, [page]);
 
   if (error) throw error;
 
@@ -128,5 +135,10 @@ export default function PostList() {
       </div>
     );
 
-  return <Table instance={instance} />;
+  return (
+    <>
+      <Loading show={loading} />
+      <Table instance={instance} onPaginate={setPage} />
+    </>
+  );
 }
