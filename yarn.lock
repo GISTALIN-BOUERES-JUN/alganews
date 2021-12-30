@@ -8382,10 +8382,10 @@ gensync@^1.0.0-beta.1, gensync@^1.0.0-beta.2:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
 
-geraldoboueres-sdk@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/geraldoboueres-sdk/-/geraldoboueres-sdk-2.2.0.tgz#d8ef791c779b7943dee7570e50d5abc079e7e024"
-  integrity sha512-qiKkOXiz32vZWMrfKbiR884m1bTiFykvOft/RD5ZbeNhKvmjCNKdTdEjN+vhAzPu9Aj6Y58Rj/zg1kI6Q75u9A==
+geraldoboueres-sdk@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/geraldoboueres-sdk/-/geraldoboueres-sdk-3.0.0.tgz#a81115750eb4ff4610212d5287427133ad9e0ffa"
+  integrity sha512-U/1PzvmcwrEAc7wSgX9vXxcMYbllQwhHcIEVNIID+mrr0+xdRgmDsUjdn2+G1+LQOZK7hlvZ0DOe0UEi0Vq2SQ==
   dependencies:
     axios "^0.24.0"
     date-fns "^2.27.0"

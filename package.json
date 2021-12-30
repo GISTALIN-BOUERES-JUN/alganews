@@ -16,7 +16,7 @@
     "axios": "^0.24.0",
     "chart.js": "2.9.4",
     "date-fns": "^2.27.0",
-    "geraldoboueres-sdk": "2.2.0",
+    "geraldoboueres-sdk": "3.0.0",
     "markdown-it": "^12.2.0",
     "polished": "^4.1.3",
     "react": "^17.0.2",
