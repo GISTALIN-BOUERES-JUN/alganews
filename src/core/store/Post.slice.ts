@@ -1,29 +1,51 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Post } from "../../sdk/@types";
+import {
+  createAsyncThunk,
+  createSlice,
+  isFulfilled,
+  isPending,
+  isRejected,
+} from "@reduxjs/toolkit";
+import { User } from "../../sdk/@types";
+import UserService from "../../sdk/services/User.service";
 
-interface PostSliceState {
-  paginated?: Post.Paginated;
+export const fetchEditors = createAsyncThunk(
+  "user/fetchEditors",
+  async function () {
+    const editors = await UserService.getAllEditors();
+    return editors;
+  }
+);
+
+interface UserSliceState {
+  editors: User.EditorSummary[];
+  fetching: boolean;
 }
 
-const initialState: PostSliceState = {
-  paginated: {
-    page: 0,
-    size: 0,
-    totalElements: 0,
-    totalPages: 1,
-    content: [],
-  },
+const initialState: UserSliceState = {
+  fetching: false,
+  editors: [],
 };
 
-const postSlice = createSlice({
-  name: "post",
+const userSlice = createSlice({
+  name: "user",
   initialState,
-  reducers: {
-    addPost(state, action: PayloadAction<Post.Summary>) {
-      state.paginated?.content?.push(action.payload);
-    },
+  reducers: {},
+  extraReducers(builder) {
+    const pendingActions = isPending(fetchEditors);
+    const fulfilledActions = isFulfilled(fetchEditors);
+    const rejectedActions = isRejected(fetchEditors);
+
+    builder
+      .addMatcher(pendingActions, (state) => {
+        state.fetching = true;
+      })
+      .addMatcher(fulfilledActions, (state) => {
+        state.fetching = false;
+      })
+      .addMatcher(rejectedActions, (state) => {
+        state.fetching = false;
+      });
   },
 });
 
-export const postReducer = postSlice.reducer;
-export const { addPost } = postSlice.actions;
+export const userReducer = userSlice.reducer;
